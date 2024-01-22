@@ -12,6 +12,7 @@ import lombok.*;
 @Getter
 @Setter
 @Table(name = "product")
+@EntityListeners(ProductListener.class)
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

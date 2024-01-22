@@ -29,7 +29,6 @@ public class ProductController {
        List<Product> listProducts = productService.getAllProduct(pageable);
        return  ResponseEntity.ok(listProducts);
     }
-
     @GetMapping("/product/{id}")
     public ResponseEntity<Optional<Product>> getProductById(@PathVariable Long id){
 

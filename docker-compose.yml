@@ -17,6 +17,8 @@ services:
       SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQLDialect
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
       SPRING_JPA_SHOW_SQL: true
+    networks:
+      - coffee-app
 
   db:
     image: mysql:8.0
@@ -28,5 +30,21 @@ services:
       - "3300:3306"
     volumes:
       - ./mysql:/var/lib/mysql
+    networks:
+      - coffee-app
 
+  redis:
+    image: redis:7.2.3
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis:/data
+    networks:
+        - coffee-app
+
+
+networks:
+  coffee-app:
+    driver: bridge
 
